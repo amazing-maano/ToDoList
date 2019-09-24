@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> To Do List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='/style.css'/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+	
+</head>
+<body>
+	<header>
+		<a href="/"><h1 class="todo-title">To Do List</h1></a>
+	</header>
+	
+	<section class="up">
+		<h2 class="item-info">Edit this Task</h2>
+	
+		<form>
+			<input type="hidden" name="id" id="id"/>
+			<input type="text" name="info"  id="info"/>
+			<button type="button" onclick="submitThis()">Submit</button>
+		</form>
+	
+		
+	</section>
+	
+	<script>
+		let path = window.location.pathname.split("/");
+		let id = path[path.length - 1];
+		console.log(id+'BAZ');
+		fetch("/main").then((res)=>{
+			res.json().then((tasks)=>{
+				tasks.forEach((task)=>{
+					if(task._id === id){
+						console.log(task)
+						let info = document.getElementById('info');
+						info.value = task.info;
+
+						let taskid = document.getElementById('id');
+						taskid.value = task._id;
+					} 
+				})
+			})
+		})
+
+		function submitThis(){
+			fetch('/tasks/update/',{ method: 'PUT',body: JSON.stringify({
+				id: document.getElementById('id').value,
+				info: document.getElementById('info').value
+			}),headers: {
+                "Content-Type": "application/json"
+            	}
+			});
+			window.location = "/";
+		}
+
+
+	</script>
+</body>
+</html>

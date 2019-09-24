@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To Do List</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel='stylesheet' href='/style.css' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+	
+</head>
+<body>
+	<header>
+		<a href="/"><h1 class="todo-title">To Do List</h1></a>
+	</header>
+	
+	<section>
+		<div class="left">
+			<button class="add-item" onclick="addNewTask(this)"><i class="fas fa-plus-circle" ></i> Add New Task </button>
+			
+			<div id="new-task" class="new-task">
+				<form action='/newTask/' method='post'>
+					<input name='info'   />
+					<button type='submit' class="submit">Add</button>
+				</form>
+			</div>
+		</div>
+		
+		<div class="right" id="tasks">
+
+		</div>
+	</section>	
+
+	<script src='script.js'></script>
+</body>
+</html>
