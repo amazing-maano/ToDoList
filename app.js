@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const mongo = require('mongodb');
-const url = 'mongodb://localhost:27017/';
+const url = process.env.MONGODB_URI || 'mongodb://localhost/todoappmk';
 const MongoClient = mongo.MongoClient;
 
 const ObjectId = require('mongodb').ObjectId;
@@ -11,7 +11,7 @@ const path = require('path')
 
 let port = process.env.PORT || 3000;
 const c = console.log;
-
+const dotenv = require('dotenv').config()
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
