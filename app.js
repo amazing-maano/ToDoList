@@ -30,7 +30,7 @@ app.get('/tasks/update/:id',( req,res ) =>{
 
 let mongod = ( funct ) => {
 	MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, ( err,db ) => {
-		let dbo = db.db('todoapp');
+		let dbo = db.db('heroku_s4lzwcfx');
 		let tasks = dbo.collection('todolist');
 		funct(err,db,tasks);
 	})
