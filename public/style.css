@@ -58,7 +58,7 @@
   .task-item{
 	display: inline-block;
 	padding-right: 10%;
-	width: 12em;
+	width: 30em;
 }
 .new-task{
 	display: none;	
